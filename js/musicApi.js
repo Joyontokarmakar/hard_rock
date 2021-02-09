@@ -1,9 +1,10 @@
-const searchSong = async() => {
+const searchSong = () => {                         //const searchSong = async() => {
     const searchText = document.getElementById('search_field').value;
     const url = `https://api.lyrics.ovh/suggest/${searchText}`;
-    const res = await fetch(url)
-    const data = await res.json()
-    displaySong(data.data)
+    fetch(url)                                     //const res = await fetch(url);
+    .then(res => res.json())                       //const data = await res.json();
+    .then(data => displaySong(data.data))           //displaySong(data.data);
+    .catch(error => displayError('Something went wrong!! Please Try again.'));
 }
 
 const displaySong = songs => {
@@ -31,11 +32,16 @@ const displaySong = songs => {
     });
 }
 
-const getLyric = ( artist, title ) => {
+const getLyric = async( artist, title ) => {
     const url = `https://api.lyrics.ovh/v1/${artist}/${title}`
-    fetch(url)
-    .then(res => res.json())
-    .then(data => displayLyrics(data.lyrics));
+    try{                                 // if use fetch then no need to use try catch
+        const res = await fetch(url);    //fetch(url)
+    const data = await res.json();       //.then(res => res.json())
+    displayLyrics(data.lyrics);           //.then(data => displayLyrics(data.lyrics))
+    }
+    catch(error){
+       displayError('Sorry!!! Something went wrong we cannot load lyrics!! Please try again')
+    }
 }
 
 const displayLyrics = lyrics => {
@@ -43,4 +49,9 @@ const displayLyrics = lyrics => {
 
     lyricsDiv.innerText = lyrics;
 
+}
+
+const displayError = error =>{
+    const errorMessage = document.getElementById('error_message');
+    errorMessage.innerText = error;
 }
