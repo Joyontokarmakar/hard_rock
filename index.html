@@ -11,7 +11,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- Custom css -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -46,27 +46,21 @@
             <div class="search-bar col-md-6 mx-auto">
                 <h1 class="text-center">Hard Rock Lyric Search</h1>
                 <div class="search-box my-5">
-                    <input type="text" class="form-control" placeholder="Enter your artist song name">
-                    <button class="btn btn-success search-btn">Search</button>
+                    <input type="text" id="search_field" class="form-control" placeholder="Enter your artist song name">
+                    <button onclick="searchSong()" class="btn btn-success search-btn">Search</button>
                 </div>
             </div>
             <!-- Single Lyrics -->
-            <div class="single-lyrics text-center">
+            <div id="song_lyrics" class="single-lyrics text-center">
                 
             </div>
-            <div class="search-result col-md-8 mx-auto py-4">
-                <div class="single-result row align-items-center my-3 p-3">
-                    <div class="col-md-9">
-                        <h3 class="lyrics-name">Purple Noon</h3>
-                        <p class="author lead">Album by <span>Washed Out</span></p>
-                    </div>
-                    <div class="col-md-3 text-md-right text-center">
-                        <button class="btn btn-success">Get Lyrics</button>
-                    </div>
-                </div>
+            <div id="song_container" class="search-result col-md-8 mx-auto py-4">
+
             </div>
         </main>
     </div>
+
+    <script src="js/musicApi.js"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
