@@ -39,3 +39,7 @@ body{
     border-radius: 15px;
 }
 
+.spin_div{
+    display: flex;
+    justify-content: center;
+}

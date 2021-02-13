@@ -50,7 +50,20 @@
                     <button onclick="searchSong()" class="btn btn-success search-btn">Search</button>
                 </div>
             </div>
+
+            <!-- Load Spinner -->
+            <div id="loading_spinner" class="spin_div d-none">
+                <div class="btn btn-success" type="button" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Loading...
+                </div>
+            </div>
+           
+
+
             <p id="error_message" class="text-danger text-center"></p>
+
+
             <!-- Single Lyrics -->
             <div id="song_lyrics" class="single-lyrics text-center">
                 

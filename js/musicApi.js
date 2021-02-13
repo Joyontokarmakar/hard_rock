@@ -1,10 +1,11 @@
 const searchSong = () => {                         //const searchSong = async() => {
     const searchText = document.getElementById('search_field').value;
     const url = `https://api.lyrics.ovh/suggest/${searchText}`;
+    toggleSpinner(true);
     fetch(url)                                     //const res = await fetch(url);
-    .then(res => res.json())                       //const data = await res.json();
-    .then(data => displaySong(data.data))           //displaySong(data.data);
-    .catch(error => displayError('Something went wrong!! Please Try again.'));
+        .then(res => res.json())                       //const data = await res.json();
+        .then(data => displaySong(data.data))           //displaySong(data.data);
+        .catch(error => displayError('Something went wrong!! Please Try again.'));
 }
 
 const displaySong = songs => {
@@ -29,6 +30,7 @@ const displaySong = songs => {
             </div>
         `
         songContainer.appendChild(songDiv);
+        toggleSpinner(false);
     });
 }
 
@@ -54,4 +56,14 @@ const displayLyrics = lyrics => {
 const displayError = error =>{
     const errorMessage = document.getElementById('error_message');
     errorMessage.innerText = error;
+}
+
+const toggleSpinner = (show) => {
+    const spinner = document.getElementById('loading_spinner');
+    if(show){
+        spinner.classList.remove('d-none');
+    }
+    else{
+        spinner.classList.add('d-none');
+    }
 }
